@@ -10,6 +10,10 @@ class PublicController extends Controller {
       return view('public.index');
   }
 
+  public function login() {
+      return view('public.login');
+  }
+
   public function register() {
       return view('public.register');
   }
