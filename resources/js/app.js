@@ -9,8 +9,6 @@ import VueAxios from 'vue-axios'
 import Antd from 'ant-design-vue';
 // import VueRouter from 'vue-router';
 
-import 'ant-design-vue/dist/antd.css';
-
 Vue.use(Antd, Axios, VueAxios);
 // Vue.use(VueRouter);
 

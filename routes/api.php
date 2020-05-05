@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/register', 'Api\PublicController@register');
+
+Route::get('/register/username/{username}', 'Api\PublicController@verify_username');
+
+Route::get('/sysconf/{key}', 'Api\PublicController@sysConf');
