@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/login');
-Route::get('/login', 'PublicController@login');
-Route::get('/register', 'PublicController@register');
+Route::get('/', 'PublicController@index');
+// Route::get('/login', 'PublicController@login');
+// Route::get('/register', 'PublicController@register');

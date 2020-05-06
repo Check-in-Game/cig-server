@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::get('/isLoggedIn', 'Api\PublicController@is_logged_in');
+
 Route::post('/register', 'Api\PublicController@register');
+Route::post('/login', 'Api\PublicController@login');
 
 Route::get('/register/username/{username}', 'Api\PublicController@verify_username');
 

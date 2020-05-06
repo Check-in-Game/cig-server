@@ -39,6 +39,7 @@ class Controller extends BaseController
         }
         $sys = DB::table('v4_system')
                 ->where('skey', $key)
+                ->sharedLock()
                 ->value('svalue');
         return $sys;
     }
@@ -49,7 +50,22 @@ class Controller extends BaseController
      * @return string
      */
     public function generate_password(string $password) {
-      return md5(md5($password.env('APP_KEY', 'CIGv4')).env('APP_KEY', 'CIGv4'));
+        return md5(md5($password).'*7xlk2"[x/..2]');
+    }
+
+    /**
+     * 生成AUTH
+     * @param  string password
+     * @return string
+     */
+    public function generate_auth(string $uid) {
+        $user = DB::table('v4_users')->where('uid', $uid)->first();
+        if ($user) {
+            $login_channel = $this->sysconfig('login_available');
+            return md5(md5($user->uid . $user->username . $user->status . $user->is_admin . $login_channel));
+        }else{
+            return false;
+        }
     }
 
 

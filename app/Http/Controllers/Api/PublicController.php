@@ -62,7 +62,7 @@ class PublicController extends \App\Http\Controllers\Controller {
    */
   public function register(Request $request) {
       // 检查是否开启注册 reg channel
-      $regc = DB::table('v4_system')->where('skey', 'register_available')->value('svalue');
+      $regc = $this->sysconfig('register_available');
       if ($regc != 'true') {
         $res = $this->json(403, 'Channel closed.', '注册通道已关闭', false);
         return response($res);
@@ -105,13 +105,65 @@ class PublicController extends \App\Http\Controllers\Controller {
       $data['status'] = 0; // 邮箱待验证
       $data['update_at'] = $now;
       $data['create_at'] = $now;
-      $reg = DB::table('v4_users')->insert($data);
-      if ($reg) {
-        $res = $this->json(200, 'Succeeded in registering an account.', '注册成功', $reg);
-        return response($res);
+      $uid = DB::table('v4_users')->insertGetId($data);
+      if ($uid) {
+        $res = $this->json(200, 'Succeeded in registering an account.', '注册成功', $uid);
+        return response($res)
+                ->cookie('uid', $uid, 60 * 12)
+                ->cookie('auth', $this->generate_auth($uid), 60 * 12);
       }else{
         $res = $this->json(400, 'Failed to register an account.', '注册失败', $reg);
         return response($res);
+      }
+  }
+
+  /**
+   * 登录
+   * @param  string username  用户名
+   * @param  string password  密码
+   * @return mixed
+   */
+  public function login(Request $request) {
+      $patt_username  = '/^[A-Za-z][A-Za-z0-9_]{5,15}$/';
+      $patt_password  = '/^[\S\s]{8,16}$/';
+      if (!$request->has(['username', 'password'])) {
+          $res = $this->json(403, 'Bad request.', '非法的请求', false);
+          return response($res);
+      }
+      $username = $request->username;
+      $password = $request->password;
+      // 验证用户名和密码是否合法
+      if (!preg_match($patt_username, $username) || !preg_match($patt_password, $password)) {
+          $res = $this->json(400, 'Bad auth.', '错误的用户名或密码', false);
+          return response($res);
+      }
+      // 检查用户名密码是否匹配
+      $user = DB::table('v4_users')
+                ->where('username', $username)
+                ->where('password', $this->generate_password($password))
+                ->sharedLock()
+                ->first();
+      if ($user) {
+          if ($user->is_admin != true) {
+              // 检查是否开启登录 login channel
+              $lgnc = $this->sysconfig('login_available');
+              if ($lgnc != 'true') {
+                  $res = $this->json(403, 'Channel closed.', '登录通道已关闭', false);
+                  return response($res);
+              }
+          }
+          // 更新最后登录时间
+          $data['last_login_at'] = date('Y-m-d H:i:s');
+          DB::table('v4_users')
+              ->where('uid', $user->uid)
+              ->update($data);
+          $res = $this->json(200, 'Succeeded in logging in.', '注册成功', $user->uid);
+          return response($res)
+                ->cookie('uid', $user->uid, 60 * 12)
+                ->cookie('auth', $this->generate_auth($user->uid), 60 * 12);
+      }else{
+          $res = $this->json(403, 'Bad auth.', '错误的用户名或密码', false);
+          return response($res);
       }
   }
 }
