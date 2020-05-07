@@ -10,11 +10,11 @@ export default [
   {
     name: 'login',
     path: '/login',
-    component: () => import(/* webpackChunkName: "js/components/public/login" */ './components/public/login.vue'),
+    component: () => import(/* webpackChunkName: "js/components/public/login" */ '../components/public/login.vue'),
   },
   {
     name: 'register',
     path: '/register',
-    component: () => import(/* webpackChunkName: "js/components/publi/register" */ './components/public/register.vue'),
+    component: () => import(/* webpackChunkName: "js/components/publi/register" */ '../components/public/register.vue'),
   },
 ];

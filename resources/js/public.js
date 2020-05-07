@@ -8,8 +8,8 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import Antd from 'ant-design-vue';
 import VueRouter from 'vue-router';
-import routes from './routes.js';
-import cig from './cig.vue';
+import routes from './routes/public.js';
+import cig from './layout/public.vue';
 
 import 'ant-design-vue/dist/antd.css';
 
