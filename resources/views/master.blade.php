@@ -18,8 +18,6 @@
       var staticurl = "{{ $_APP_STATIC_ }}";
     </script>
     @yield('script')
-    <script src="{{ mix('js/manifest.js') }}" charset="utf-8"></script>
-    <script src="{{ mix('js/vendor.js') }}" charset="utf-8"></script>
     <script src="{{ mix('js/public.js') }}" charset="utf-8"></script>
   </body>
 </html>

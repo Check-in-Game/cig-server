@@ -1,7 +1,5 @@
 {
-    "/js/manifest.js": "/js/manifest.js?id=9ebd7e2a91833135f58f",
-    "/js/public.js": "/js/public.js?id=b27c83e60636ff136f62",
-    "/js/vendor.js": "/js/vendor.js?id=ef4ac6a272be385d895c",
-    "/js/components/publi/register.js": "/js/components/publi/register.js?id=5b3c8ef5583cd6cc5d45",
-    "/js/components/public/login.js": "/js/components/public/login.js?id=48fe07ea55d06ff48a05"
+    "/js/public.js": "/js/public.js?id=bf8fd786e0e4e02d4311",
+    "/js/components/publi/register.js": "/js/components/publi/register.js?id=aabddceb3514b0480eb5",
+    "/js/components/public/login.js": "/js/components/public/login.js?id=0752327e76a4cfec9f8e"
 }

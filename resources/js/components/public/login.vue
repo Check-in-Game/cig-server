@@ -20,7 +20,7 @@
                 v-if="!login_available"
               />
               <div>
-                <a-input placeholder="在此输入用户名" v-model="username" allowClear tabindex="1" autofocus>
+                <a-input placeholder="在此输入用户名" v-model="username" allowClear tabindex="1" auto-focus>
                   <a-icon slot="prefix" type="user" />
                 </a-input>
                 <br />

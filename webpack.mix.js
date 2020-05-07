@@ -23,6 +23,6 @@ mix.webpackConfig({
 
 mix
   .js('resources/js/public.js', 'public/js').version([])
-  .extract(['vue', 'ant-design-vue']).version([])
+  // .extract(['vue', 'ant-design-vue']).version([])
   // .less('resources/less/cig.antd.less', 'public/css').version([])
 ;
