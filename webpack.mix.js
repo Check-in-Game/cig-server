@@ -12,7 +12,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  */
 
 mix.babelConfig({
-    plugins: ["@babel/plugin-syntax-dynamic-import"],
+    "plugins": [
+        "@babel/plugin-syntax-dynamic-import",
+    ],
 });
 
 mix.webpackConfig({
@@ -23,6 +25,10 @@ mix.webpackConfig({
 
 mix
   .js('resources/js/public.js', 'public/js').version([])
+  .js('resources/js/user.js', 'public/js').version([])
+  .js('resources/js/use2r.js', 'public/js').version([])
+  .styles('resources/css/cig/main.css', 'public/css/cig/main.css').version([])
+  .styles('resources/css/cig/main2.css', 'public/css/cig/main2.css').version([])
   // .extract(['vue', 'ant-design-vue']).version([])
   // .less('resources/less/cig.antd.less', 'public/css').version([])
 ;

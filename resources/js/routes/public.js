@@ -15,6 +15,6 @@ export default [
   {
     name: 'register',
     path: '/register',
-    component: () => import(/* webpackChunkName: "js/components/publi/register" */ '../components/public/register.vue'),
+    component: () => import(/* webpackChunkName: "js/components/public/register" */ '../components/public/register.vue'),
   },
 ];
