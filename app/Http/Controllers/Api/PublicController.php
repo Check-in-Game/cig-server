@@ -166,4 +166,17 @@ class PublicController extends \App\Http\Controllers\Controller {
           return response($res);
       }
   }
+
+  /**
+   * 登出
+   * @param  void
+   * @return mixed
+   */
+  public function logout(Request $request) {
+
+      $res = $this->json(200, 'Succeeded in logging out.', '登出成功', null);
+      return response($res)
+            ->cookie('uid', null, -1)
+            ->cookie('auth', null, -1);
+  }
 }

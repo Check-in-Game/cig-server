@@ -1,8 +1,7 @@
 {
-    "/js/public.js": "/js/public.js?id=63231ceaa7676a25dd0f",
-    "/js/user.js": "/js/user.js?id=a21e727b2e52d670fdd5",
-    "/js/components/public/login.js": "/js/components/public/login.js?id=71f46ebf51fe8142c98e",
+    "/js/public.js": "/js/public.js?id=51e2e490be38885c7d0a",
+    "/js/user.js": "/js/user.js?id=03625f7382f571f0683f",
+    "/js/components/public/login.js": "/js/components/public/login.js?id=2d760d63e71e6d1cddf6",
     "/js/components/public/register.js": "/js/components/public/register.js?id=df19ab6ba96d9969d2f0",
-    "/js/components/user/index.js": "/js/components/user/index.js?id=b391d1bfbc5c8654e4d7",
-    "/css/cig/main.css": "/css/cig/main.css?id=d41d8cd98f00b204e980"
+    "/js/components/user/index.js": "/js/components/user/index.js?id=a765c42372a150b7da30"
 }

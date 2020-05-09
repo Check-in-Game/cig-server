@@ -55,10 +55,10 @@ class Controller extends BaseController
 
     /**
      * 生成AUTH
-     * @param  string password
+     * @param  int    uid
      * @return string
      */
-    public function generate_auth(string $uid) {
+    public function generate_auth(int $uid) {
         $user = DB::table('v4_users')->where('uid', $uid)->first();
         if ($user) {
             $login_channel = $this->sysconfig('login_available');
@@ -66,6 +66,15 @@ class Controller extends BaseController
         }else{
             return false;
         }
+    }
+
+    /**
+     * 获取用户信息
+     * @param  int    uid
+     * @return string
+     */
+    public function get_user(int $uid) {
+        return DB::table('v4_users')->where('uid', $uid)->first();
     }
 
 

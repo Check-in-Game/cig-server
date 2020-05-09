@@ -66,7 +66,10 @@ export default {
     }
   },
   mounted: function() {
-    // 获取当前登录状态
+    // 判断是否被跳转
+    if (redirect != '') {
+      this.$message.warning('您的登录状态失效，请重新登录！');
+    }
     // 判断注册通道是否开启
     this.$http.get(baseurl + '/api/sysconf/login')
       .then((response) => {
@@ -110,7 +113,11 @@ export default {
       .then((response) => {
         if (response.data.errno == '200') {
           // 登录成功并跳转
-          location.href = baseurl + '/user';
+          if (redirect != '') {
+            location.href = redirect;
+          }else{
+            location.href = baseurl + '/user';
+          }
           return;
         }else{
           this.$message.error('登录失败：' + response.data.errzh);

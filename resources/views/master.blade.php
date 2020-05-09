@@ -6,7 +6,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <link rel="stylesheet" href="{{ mix('css/cig/main.css') }}">
     @yield('meta')
     <title>@yield('title') - Checkin Game</title>
   </head>

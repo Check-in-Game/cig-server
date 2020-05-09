@@ -78,8 +78,12 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    // 获取当前登录状态
-    // 判断注册通道是否开启
+    // 判断是否被跳转
+    if (redirect != '') {
+      this.$message.warning('您的登录状态失效，请重新登录！');
+    } // 判断注册通道是否开启
+
+
     this.$http.get(baseurl + '/api/sysconf/login').then(function (response) {
       // 关闭加载提示
       if (response.data.body == 'false') {
@@ -128,7 +132,12 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         if (response.data.errno == '200') {
           // 登录成功并跳转
-          location.href = baseurl + '/user';
+          if (redirect != '') {
+            location.href = redirect;
+          } else {
+            location.href = baseurl + '/user';
+          }
+
           return;
         } else {
           _this2.$message.error('登录失败：' + response.data.errzh);
