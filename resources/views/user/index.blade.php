@@ -11,7 +11,7 @@
   user.nickname = "{{ $user->nickname }}";
   user.points = "{{ $user->points }}";
   user.stones = "{{ $user->stones }}";
-  user.papers = "{{ $user->papers }}";
+  user.runes = "{{ $user->runes }}";
   user.brocades = "{{ $user->brocades }}";
   user.mys_stones = "{{ $user->mys_stones }}";
   user.star_stones = "{{ $user->star_stones }}";

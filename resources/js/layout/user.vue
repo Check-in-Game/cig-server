@@ -10,24 +10,26 @@
         <h1>Checkin Game</h1>
       </div>
 
-      <a-menu theme="dark" mode="inline" :default-selected-keys="['user']" :selectedKeys="$route.name == null ? ['user'] : [$route.name]">
-          <a-menu-item key="user">
-            <router-link :to="{ name: 'user' }">
-              <a-icon type="user" />
-              用户中心
-            </router-link>
-          </a-menu-item>
-          <a-menu-item key="checkin">
-            <router-link :to="{ name: 'checkin' }">
-              <a-icon type="check" />
-              签到中心
-            </router-link>
-          </a-menu-item>
-          <a-menu-item @click="logout">
-            <a-icon type="logout" />
-            <span>退出登录</span>
-          </a-menu-item>
-      </a-menu>
+      <transition name="slide">
+        <a-menu theme="dark" mode="inline" :default-selected-keys="['user']" :selectedKeys="$route.name == null ? ['user'] : [$route.name]">
+            <a-menu-item key="user">
+              <router-link :to="{ name: 'user' }">
+                <a-icon type="user" />
+                用户中心
+              </router-link>
+            </a-menu-item>
+            <a-menu-item key="checkin">
+              <router-link :to="{ name: 'checkin' }">
+                <a-icon type="check" />
+                签到中心
+              </router-link>
+            </a-menu-item>
+            <a-menu-item @click="logout">
+              <a-icon type="logout" />
+              <span>退出登录</span>
+            </a-menu-item>
+        </a-menu>
+      </transition>
 
     </a-layout-sider>
     <a-layout :style="{ marginLeft: '0px' }">
@@ -85,7 +87,7 @@ export default {
         this.$message.error('登出失败：服务器连接错误');
       });
     },
-  }
+  },
 }
 </script>
 

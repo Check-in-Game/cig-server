@@ -21,7 +21,7 @@ class CreateUsers extends Migration
             $table->string('email', 64)->default('')->unique();
             $table->bigInteger('points')->default(0)->comment('积分');
             $table->bigInteger('stones')->default(0)->comment('石');
-            $table->bigInteger('papers')->default(0)->comment('符');
+            $table->bigInteger('runes')->default(0)->comment('符');
             $table->bigInteger('brocades')->default(0)->comment('锦');
             $table->bigInteger('mys_stones')->default(0)->comment('神秘石');
             $table->bigInteger('star_stones')->default(0)->comment('星石');
