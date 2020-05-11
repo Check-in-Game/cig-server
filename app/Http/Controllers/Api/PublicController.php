@@ -110,7 +110,7 @@ class PublicController extends \App\Http\Controllers\Controller {
         $res = $this->json(200, 'Succeeded in registering an account.', '注册成功', $uid);
         return response($res)
                 ->cookie('uid', $uid, 60 * 12)
-                ->cookie('auth', $this->generate_auth($uid), 60 * 12);
+                ->cookie('auth', $this->generate_auth($uid, 1), 60 * 12);
       }else{
         $res = $this->json(400, 'Failed to register an account.', '注册失败', $reg);
         return response($res);

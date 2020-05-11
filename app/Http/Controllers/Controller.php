@@ -56,12 +56,17 @@ class Controller extends BaseController
     /**
      * 生成AUTH
      * @param  int    uid
+     * @param  int    login_channel
      * @return string
      */
-    public function generate_auth(int $uid) {
+    public function generate_auth(int $uid, int $login_channel = null) {
         $user = DB::table('v4_users')->where('uid', $uid)->first();
         if ($user) {
-            $login_channel = $this->sysconfig('login_available');
+            if ($login_channel === null) {
+              $login_channel = $this->sysconfig('login_available');
+            }else{
+              $login_channel = 1;
+            }
             return md5(md5($user->uid . $user->username . $user->status . $user->is_admin . $login_channel));
         }else{
             return false;

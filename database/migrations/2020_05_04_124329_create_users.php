@@ -18,7 +18,7 @@ class CreateUsers extends Migration
             $table->string('username', 16)->unique();
             $table->string('password', 32);
             $table->string('nickname', 16);
-            $table->string('email', 64)->default('')->unique();
+            $table->string('email', 64)->default('');
             $table->bigInteger('points')->default(0)->comment('积分');
             $table->bigInteger('stones')->default(0)->comment('石');
             $table->bigInteger('runes')->default(0)->comment('符');
