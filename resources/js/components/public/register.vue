@@ -81,7 +81,7 @@ export default {
       'refresh_code': 1,
       'code': code_url,
       'load_stat': true,
-      'load_delay': 1000,
+      'load_delay': 0,
       'register_available': true,
       'available_username': false,
       'username_input_tooltip_show': false,

@@ -61,7 +61,7 @@ export default {
       'username': '',
       'password': '',
       'load_stat': true,
-      'load_delay': 1000,
+      'load_delay': 0,
       'login_available': true,
     }
   },
@@ -113,6 +113,7 @@ export default {
       .then((response) => {
         if (response.data.errno == '200') {
           // 登录成功并跳转
+          this.$message.success('登录成功，正在跳转...');
           if (redirect != '') {
             location.href = redirect;
           }else{
