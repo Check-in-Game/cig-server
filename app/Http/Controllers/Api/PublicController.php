@@ -157,7 +157,7 @@ class PublicController extends \App\Http\Controllers\Controller {
           DB::table('v4_users')
               ->where('uid', $user->uid)
               ->update($data);
-          $res = $this->json(200, 'Succeeded in logging in.', '注册成功', $user->uid);
+          $res = $this->json(200, 'Succeeded in logging in.', '登录成功', $user->uid);
           return response($res)
                 ->cookie('uid', $user->uid, 60 * 12)
                 ->cookie('auth', $this->generate_auth($user->uid), 60 * 12);
